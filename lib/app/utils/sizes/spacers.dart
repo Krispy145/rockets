@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rockets/app/helpers/sizes/screen_size.dart';
+import 'package:rockets/app/utils/sizes/screen_size.dart';
 
 enum SizeTypes { fixed, scaling }
 

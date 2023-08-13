@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rockets/app/dependency_injection/injection_container.dart';
-import 'package:rockets/app/helpers/sizes/spacers.dart';
+import 'package:rockets/app/utils/sizes/edge_insets.dart';
+import 'package:rockets/app/utils/sizes/spacers.dart';
 import 'package:rockets/app/theme/app_theme.dart';
 import 'package:rockets/blocs/rockets/rockets_bloc.dart';
 import 'package:rockets/models/rocket/rocket_model.dart';
@@ -22,7 +23,7 @@ class RocketView extends StatelessWidget {
             if (state is RocketLoaded) {
               final rocketData = state.rocket;
               return Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: AppEdgeInsets.all(context, Sizes.m),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

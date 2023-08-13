@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rockets/app/helpers/sizes/spacers.dart';
+import 'package:rockets/app/utils/sizes/edge_insets.dart';
+import 'package:rockets/app/utils/sizes/spacers.dart';
 import 'package:rockets/app/router/app_router.dart';
 
 class HomeView extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Home View')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: AppEdgeInsets.all(context, Sizes.m),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

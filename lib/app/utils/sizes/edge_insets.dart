@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rockets/app/helpers/sizes/spacers.dart';
+import 'package:rockets/app/utils/sizes/spacers.dart';
 
 class AppEdgeInsets extends EdgeInsets {
   const AppEdgeInsets.zero() : super.all(0);

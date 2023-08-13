@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rockets/app/dependency_injection/injection_container.dart';
-import 'package:rockets/app/helpers/sizes/spacers.dart';
+import 'package:rockets/app/utils/sizes/edge_insets.dart';
+import 'package:rockets/app/utils/sizes/spacers.dart';
 import 'package:rockets/app/theme/app_theme.dart';
 import 'package:rockets/blocs/missions/missions_bloc.dart';
 
@@ -16,7 +17,7 @@ class MissionView extends StatelessWidget {
         title: const Text('Mission Details'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: AppEdgeInsets.all(context, Sizes.m),
         child: BlocProvider<MissionsBloc>.value(
           value: Managers.missionsBloc..add(FetchMission(id)),
           child: BlocBuilder<MissionsBloc, MissionsState>(

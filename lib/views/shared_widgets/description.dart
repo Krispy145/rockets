@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rockets/app/helpers/sizes/edge_insets.dart';
-import 'package:rockets/app/helpers/sizes/spacers.dart';
+import 'package:rockets/app/utils/sizes/edge_insets.dart';
+import 'package:rockets/app/utils/sizes/spacers.dart';
 import 'package:rockets/app/theme/app_theme.dart';
 
 class DescriptionContainer extends StatelessWidget {
