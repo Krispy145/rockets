@@ -1,0 +1,96 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "rockets Web (Prod) ",
+            "program": "/lib/app/flavors/main_prod.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",
+            ]
+          },
+          {
+            "name": "rockets Web (Dev) ",
+            "program": "lib/app/flavors/main_dev.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",
+            ]
+          },
+        {
+            "name": "rockets (Dev)",
+            "program": "lib/app/flavors/main_dev.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "dev"
+            ]
+        },
+        {
+            "name": "rockets (profile mode) (Dev)",
+            "program": "lib/app/flavors/main_dev.dart",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile", 
+            "args": [
+                "--flavor",
+                "dev"
+            ]
+        },
+        {
+            "name": "rockets (release mode) (Dev)",
+            "program": "lib/app/flavors/main_dev.dart",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+             "args": [
+                "--flavor",
+                "dev"
+            ]
+        },
+        {
+            "name": "rockets (Prod)",
+            "program": "lib/app/flavors/main_prod.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "prod"
+            ]
+        },
+        {
+            "name": "rockets (profile mode) (Prod)",
+            "program": "lib/app/flavors/main_prod.dart",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "prod"
+            ]
+        },
+        {
+            "name": "rockets (release mode) (Prod)",
+            "program": "lib/app/flavors/main_prod.dart",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "prod"
+            ]
+        }
+    ]
+}
