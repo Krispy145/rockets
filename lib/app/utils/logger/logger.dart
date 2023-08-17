@@ -5,7 +5,8 @@ enum LoggerFeature {
   navigation,
   dependancyInjection,
   rockets,
-  missions;
+  missions,
+  theme;
 
   ///Method responsible for determining whether logs should be printed.
   bool get shouldPrint {
@@ -17,6 +18,8 @@ enum LoggerFeature {
       case LoggerFeature.rockets:
         return true;
       case LoggerFeature.missions:
+        return true;
+      case LoggerFeature.theme:
         return true;
     }
   }
@@ -32,6 +35,8 @@ enum LoggerFeature {
         return "ROCKETS";
       case LoggerFeature.missions:
         return "MISSIONS";
+      case LoggerFeature.theme:
+        return "THEME";
     }
   }
 }
