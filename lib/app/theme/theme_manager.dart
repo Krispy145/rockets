@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:rockets/app/utils/logger/logger.dart';
 
 ///Class responsible for providing the theme to other widgets in the app.
 class ThemeManager extends ChangeNotifier {
-  ///Field to store current theme mode, initialised to light.
-  ThemeMode themeMode = ThemeMode.dark;
+  ThemeMode _themeMode = ThemeMode.dark;
 
-  ///Getter responsible for determining whether theme is dark.
-  bool get isDarkMode => themeMode == ThemeMode.dark;
+  ValueNotifier<bool> isDarkMode = ValueNotifier(true);
+
+  ///Getter responsible for determining the theme.
+  ThemeMode get themeMode => _themeMode;
 
   ///Method responsible for toggling the theme.
-  void toggleTheme(bool isDark) {
-    themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+  void toggleTheme() {
+    _themeMode = _themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+    isDarkMode.value = _themeMode == ThemeMode.dark;
+    Logger.print("Theme Set: $_themeMode", [LoggerFeature.theme]);
     notifyListeners();
   }
 }

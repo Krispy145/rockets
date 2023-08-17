@@ -19,21 +19,21 @@ class ManagerInjector {
   final dio = Dio();
 
   ///Method responsible for initialising all service locator registrations.
-  Future<void> init({required FlavorConfig flavorConfig}) async {
+  void init({required FlavorConfig flavorConfig}) {
     Logger.print("Initializing ManagerInjector...", [LoggerFeature.dependancyInjection]);
 
     // Core
     initCore(flavorConfig: flavorConfig);
 
     // External
-    Logger.print("Initializing external services...", [LoggerFeature.dependancyInjection]);
-    await initExternal();
+    initExternal();
     Logger.print("ManagerInjector initialization complete.", [LoggerFeature.dependancyInjection]);
   }
 
   ///Method responsible for handling all service locator registrations for core
   ///classes used in multiple features.
   void initCore({required FlavorConfig flavorConfig}) {
+    Logger.print("Initializing core services...", [LoggerFeature.dependancyInjection]);
     _serviceLocator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(_serviceLocator()));
     _serviceLocator.registerLazySingleton<FlavorManager>(() => FlavorManager(flavorConfig: flavorConfig));
     _serviceLocator.registerLazySingleton<ThemeManager>(() => ThemeManager());
@@ -41,7 +41,8 @@ class ManagerInjector {
 
   ///Method responsible for handling all service locator registrations for external
   ///services.
-  Future<void> initExternal() async {
+  void initExternal() {
+    Logger.print("Initializing external services...", [LoggerFeature.dependancyInjection]);
     //Blocs
     _serviceLocator.registerLazySingleton<RocketsBloc>(() => RocketsBloc());
     _serviceLocator.registerLazySingleton<MissionsBloc>(() => MissionsBloc());
