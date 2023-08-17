@@ -7,6 +7,7 @@ abstract class RocketsState extends Equatable {
   List<Object> get props => [];
 }
 
+///ROCKETS
 class RocketsInitial extends RocketsState {}
 
 class RocketsLoading extends RocketsState {}
@@ -29,6 +30,7 @@ class RocketsError extends RocketsState {
   List<Object> get props => [message];
 }
 
+///ROCKET
 class RocketInitial extends RocketsState {}
 
 class RocketLoading extends RocketsState {}

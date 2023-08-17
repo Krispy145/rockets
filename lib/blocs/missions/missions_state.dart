@@ -7,6 +7,7 @@ abstract class MissionsState extends Equatable {
   List<Object> get props => [];
 }
 
+///MISSIONS
 class MissionsInitial extends MissionsState {}
 
 class MissionsLoading extends MissionsState {}
@@ -29,6 +30,7 @@ class MissionsError extends MissionsState {
   List<Object> get props => [message];
 }
 
+///MISSION
 class MissionInitial extends MissionsState {}
 
 class MissionLoading extends MissionsState {}

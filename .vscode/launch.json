@@ -67,6 +67,32 @@
                 "--flavor",
                 "prod"
             ]
+        },
+        {
+            "name": "Rockets Web (Dev)",
+            "program": "lib/app/flavors/main_dev.dart",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",               
+            ]
+        },
+        {
+            "name": "Rockets Web (Prod)",
+            "program": "lib/app/flavors/main_prod.dart",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",               
+            ]
         }
     ]
 }
