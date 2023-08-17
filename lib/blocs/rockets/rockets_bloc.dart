@@ -10,7 +10,6 @@ part 'rockets_state.dart';
 class RocketsBloc extends Bloc<RocketsEvent, RocketsState> {
   RocketsBloc() : super(RocketsInitial()) {
     on<FetchRockets>(_fetchRockets);
-    on<FetchRocket>(_fetchRocket);
   }
 
   void _fetchRockets(FetchRockets event, Emitter<RocketsState> emit) async {
@@ -24,20 +23,6 @@ class RocketsBloc extends Bloc<RocketsEvent, RocketsState> {
     } catch (e) {
       Logger.print("Failed to fetch rockets: $e", [LoggerFeature.rockets]);
       emit(RocketsError('Failed to fetch rockets: $e'));
-    }
-  }
-
-  void _fetchRocket(FetchRocket event, Emitter<RocketsState> emit) async {
-    Logger.print("Fetching rocket...", [LoggerFeature.rockets]);
-    emit(RocketsLoading());
-
-    try {
-      final rocket = await Managers.rocketsApi.fetchRocket(rocketId: event.rocketId);
-      Logger.print("rocket fetched: $rocket", [LoggerFeature.rockets]);
-      emit(RocketLoaded(rocket));
-    } catch (e) {
-      Logger.print("Failed to fetch rocket: $e", [LoggerFeature.rockets]);
-      emit(RocketsError('Failed to fetch rocket: $e'));
     }
   }
 }

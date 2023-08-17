@@ -8,12 +8,3 @@ abstract class RocketsEvent extends Equatable {
 }
 
 class FetchRockets extends RocketsEvent {}
-
-class FetchRocket extends RocketsEvent {
-  final String rocketId;
-
-  const FetchRocket(this.rocketId);
-
-  @override
-  List<Object> get props => [rocketId];
-}

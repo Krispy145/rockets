@@ -4,6 +4,7 @@ import 'package:rockets/app/dependency_injection/injection_container.dart';
 import 'package:rockets/app/utils/sizes/edge_insets.dart';
 import 'package:rockets/app/utils/sizes/spacers.dart';
 import 'package:rockets/app/theme/app_theme.dart';
+import 'package:rockets/blocs/rocket/rocket_bloc.dart';
 import 'package:rockets/blocs/rockets/rockets_bloc.dart';
 import 'package:rockets/models/rocket/rocket_model.dart';
 
@@ -17,8 +18,8 @@ class RocketView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Rocket View')),
       body: BlocProvider.value(
-        value: Managers.rocketsBloc..add(FetchRocket(id)),
-        child: BlocBuilder<RocketsBloc, RocketsState>(
+        value: Managers.rocketBloc..add(FetchRocket(id)),
+        child: BlocBuilder<RocketBloc, RocketState>(
           builder: (context, state) {
             if (state is RocketLoaded) {
               final rocketData = state.rocket;

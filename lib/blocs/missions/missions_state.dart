@@ -29,26 +29,3 @@ class MissionsError extends MissionsState {
   @override
   List<Object> get props => [message];
 }
-
-///MISSION
-class MissionInitial extends MissionsState {}
-
-class MissionLoading extends MissionsState {}
-
-class MissionLoaded extends MissionsState {
-  final MissionModel mission;
-
-  const MissionLoaded(this.mission);
-
-  @override
-  List<Object> get props => [mission];
-}
-
-class MissionError extends MissionsState {
-  final String message;
-
-  const MissionError(this.message);
-
-  @override
-  List<Object> get props => [message];
-}

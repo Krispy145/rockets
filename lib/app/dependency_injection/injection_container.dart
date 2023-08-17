@@ -6,7 +6,9 @@ import 'package:rockets/app/utils/logger/logger.dart';
 import 'package:rockets/app/utils/network_info/network_info.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:get_it/get_it.dart';
+import 'package:rockets/blocs/mission/mission_bloc.dart';
 import 'package:rockets/blocs/missions/missions_bloc.dart';
+import 'package:rockets/blocs/rocket/rocket_bloc.dart';
 import 'package:rockets/blocs/rockets/rockets_bloc.dart';
 import 'package:rockets/data/missions_repository.dart';
 import 'package:rockets/data/rockets_repository.dart';
@@ -45,7 +47,9 @@ class ManagerInjector {
     Logger.print("Initializing external services...", [LoggerFeature.dependancyInjection]);
     //Blocs
     _serviceLocator.registerLazySingleton<RocketsBloc>(() => RocketsBloc());
+    _serviceLocator.registerLazySingleton<RocketBloc>(() => RocketBloc());
     _serviceLocator.registerLazySingleton<MissionsBloc>(() => MissionsBloc());
+    _serviceLocator.registerLazySingleton<MissionBloc>(() => MissionBloc());
 
     //Repositories
     _serviceLocator.registerLazySingleton<ApiRocketsRepository>(() => ApiRocketsRepository(dio));
@@ -63,7 +67,10 @@ class ManagerInjector {
 
   //Blocs
   RocketsBloc get rocketsBloc => _serviceLocator.get<RocketsBloc>();
+  RocketBloc get rocketBloc => _serviceLocator.get<RocketBloc>();
+
   MissionsBloc get missionsBloc => _serviceLocator.get<MissionsBloc>();
+  MissionBloc get missionBloc => _serviceLocator.get<MissionBloc>();
 
   //Repositories
   ApiRocketsRepository get rocketsApi => _serviceLocator.get<ApiRocketsRepository>();

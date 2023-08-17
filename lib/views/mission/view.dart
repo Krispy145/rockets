@@ -4,7 +4,7 @@ import 'package:rockets/app/dependency_injection/injection_container.dart';
 import 'package:rockets/app/utils/sizes/edge_insets.dart';
 import 'package:rockets/app/utils/sizes/spacers.dart';
 import 'package:rockets/app/theme/app_theme.dart';
-import 'package:rockets/blocs/missions/missions_bloc.dart';
+import 'package:rockets/blocs/mission/mission_bloc.dart';
 
 class MissionView extends StatelessWidget {
   final String id;
@@ -18,9 +18,9 @@ class MissionView extends StatelessWidget {
       ),
       body: Padding(
         padding: AppEdgeInsets.all(context, Sizes.m),
-        child: BlocProvider<MissionsBloc>.value(
-          value: Managers.missionsBloc..add(FetchMission(id)),
-          child: BlocBuilder<MissionsBloc, MissionsState>(
+        child: BlocProvider<MissionBloc>.value(
+          value: Managers.missionBloc..add(FetchMission(id)),
+          child: BlocBuilder<MissionBloc, MissionState>(
             builder: (context, state) {
               if (state is MissionLoaded) {
                 final missionData = state.mission;

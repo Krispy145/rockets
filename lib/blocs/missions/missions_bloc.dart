@@ -10,7 +10,6 @@ part 'missions_state.dart';
 class MissionsBloc extends Bloc<MissionsEvent, MissionsState> {
   MissionsBloc() : super(MissionsInitial()) {
     on<FetchMissions>(_fetchMissions);
-    on<FetchMission>(_fetchMission);
   }
 
   void _fetchMissions(FetchMissions event, Emitter<MissionsState> emit) async {
@@ -24,20 +23,6 @@ class MissionsBloc extends Bloc<MissionsEvent, MissionsState> {
     } catch (e) {
       Logger.print("Failed to fetch missions: $e", [LoggerFeature.missions]);
       emit(MissionsError('Failed to fetch missions: $e'));
-    }
-  }
-
-  void _fetchMission(FetchMission event, Emitter<MissionsState> emit) async {
-    Logger.print("Fetching mission...", [LoggerFeature.missions]);
-    emit(MissionsLoading());
-
-    try {
-      final mission = await Managers.missionsApi.fetchMission(missionId: event.missionId);
-      Logger.print("Mission fetched: $mission", [LoggerFeature.missions]);
-      emit(MissionLoaded(mission));
-    } catch (e) {
-      Logger.print("Failed to fetch mission: $e", [LoggerFeature.missions]);
-      emit(MissionsError('Failed to fetch mission: $e'));
     }
   }
 }

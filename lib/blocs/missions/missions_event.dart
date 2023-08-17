@@ -8,12 +8,3 @@ abstract class MissionsEvent extends Equatable {
 }
 
 class FetchMissions extends MissionsEvent {}
-
-class FetchMission extends MissionsEvent {
-  final String missionId;
-
-  const FetchMission(this.missionId);
-
-  @override
-  List<Object> get props => [missionId];
-}

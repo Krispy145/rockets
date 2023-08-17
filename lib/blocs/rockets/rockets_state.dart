@@ -29,26 +29,3 @@ class RocketsError extends RocketsState {
   @override
   List<Object> get props => [message];
 }
-
-///ROCKET
-class RocketInitial extends RocketsState {}
-
-class RocketLoading extends RocketsState {}
-
-class RocketLoaded extends RocketsState {
-  final RocketModel rocket;
-
-  const RocketLoaded(this.rocket);
-
-  @override
-  List<Object> get props => [rocket];
-}
-
-class RocketError extends RocketsState {
-  final String message;
-
-  const RocketError(this.message);
-
-  @override
-  List<Object> get props => [message];
-}
