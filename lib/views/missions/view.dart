@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rockets/app/dependency_injection/injection_container.dart';
 import 'package:rockets/app/utils/sizes/edge_insets.dart';
 import 'package:rockets/app/utils/sizes/spacers.dart';
 import 'package:rockets/app/router/app_router.dart';
@@ -19,8 +18,8 @@ class MissionsView extends StatelessWidget {
       appBar: AppBar(title: const Text('Missions View')),
       body: Padding(
         padding: AppEdgeInsets.all(context, Sizes.m),
-        child: BlocProvider.value(
-          value: Managers.missionsBloc..add(FetchMissions()),
+        child: BlocProvider<MissionsBloc>(
+          create: (context) => MissionsBloc()..add(FetchMissions()),
           child: BlocBuilder<MissionsBloc, MissionsState>(
             builder: (context, state) {
               Logger.print("MissionsView - BlocBuilder - State: $state", [LoggerFeature.missions]);
