@@ -4,12 +4,10 @@ import 'package:rockets/app/utils/sizes/edge_insets.dart';
 import 'package:rockets/app/utils/sizes/spacers.dart';
 
 class ThemeChangerButton extends StatefulWidget {
-  const ThemeChangerButton({
-    super.key,
-  });
+  const ThemeChangerButton({super.key});
 
   @override
-  _ThemeChangerButtonState createState() => _ThemeChangerButtonState();
+  State<ThemeChangerButton> createState() => _ThemeChangerButtonState();
 }
 
 class _ThemeChangerButtonState extends State<ThemeChangerButton> with SingleTickerProviderStateMixin {

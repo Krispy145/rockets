@@ -27,16 +27,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeManager>(
-      builder: (context, themeManager, child) {
-        return MaterialApp.router(
-          title: 'Rockets',
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: themeManager.themeMode,
-          routerConfig: AppRouter.router,
-        );
-      },
+      builder: (context, themeManager, child) => MaterialApp.router(
+        title: 'Rockets',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: themeManager.themeMode,
+        routerConfig: AppRouter.router,
+      ),
     );
   }
 }
