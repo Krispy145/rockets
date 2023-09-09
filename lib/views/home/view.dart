@@ -25,13 +25,13 @@ class HomeView extends StatelessWidget {
               Sizes.s.spacer(),
               ElevatedButton(
                 // onPressed: () => context.goNamed(AppRouter.rockets),
-                onPressed: () => context.pushNamed(AppRouter.slider),
-                child: const Text('Slider'),
+                onPressed: () => AppRouter.mainScaffoldKey.currentState?.openDrawer(),
+                child: const Text('Left Drawer'),
               ),
               Sizes.s.spacer(),
               ElevatedButton(
-                onPressed: () => context.pushNamed(AppRouter.leftPanel),
-                child: const Text('Left Panel'),
+                onPressed: () => AppRouter.mainScaffoldKey.currentState?.openEndDrawer(),
+                child: const Text('Right Drawer'),
               ),
             ],
           ),
