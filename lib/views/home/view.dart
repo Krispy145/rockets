@@ -11,30 +11,30 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home View'),
-        actions: const [
-          ThemeChangerButton(),
-        ],
-      ),
-      body: Padding(
-        padding: AppEdgeInsets.all(context, Sizes.m),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Sizes.s.spacer(),
-            ElevatedButton(
-              onPressed: () => context.goNamed(AppRouter.rockets),
-              child: const Text('Rockets'),
-            ),
-            Sizes.s.spacer(),
-            ElevatedButton(
-              onPressed: () => context.goNamed(AppRouter.missions),
-              child: const Text('Missions'),
-            ),
+        appBar: AppBar(
+          title: const Text('Home View'),
+          actions: const [
+            ThemeChangerButton(),
           ],
         ),
-      ),
-    );
+        body: Padding(
+          padding: AppEdgeInsets.all(context, Sizes.m),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Sizes.s.spacer(),
+              ElevatedButton(
+                // onPressed: () => context.goNamed(AppRouter.rockets),
+                onPressed: () => context.pushNamed(AppRouter.slider),
+                child: const Text('Slider'),
+              ),
+              Sizes.s.spacer(),
+              ElevatedButton(
+                onPressed: () => context.pushNamed(AppRouter.leftPanel),
+                child: const Text('Left Panel'),
+              ),
+            ],
+          ),
+        ));
   }
 }

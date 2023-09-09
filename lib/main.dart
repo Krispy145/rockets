@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:provider/provider.dart';
+
 import 'package:rockets/app/dependency_injection/injection_container.dart';
 import 'package:rockets/app/flavors/flavor_config.dart';
 import 'package:rockets/app/router/app_router.dart';
@@ -9,6 +11,7 @@ import 'package:rockets/app/theme/theme_manager.dart';
 
 void appMain({required FlavorConfig flavorConfig}) async {
   WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
   Managers.init(flavorConfig: flavorConfig);
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(

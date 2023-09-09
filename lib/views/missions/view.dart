@@ -33,7 +33,7 @@ class MissionsView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final mission = state.missions[index];
                     return InkWell(
-                      onTap: () => context.goNamed(AppRouter.mission, pathParameters: {"id": mission.missionId ?? "No Mission ID"}),
+                      onTap: () => context.pushNamed(AppRouter.mission, pathParameters: {"id": mission.missionId ?? "No Mission ID"}),
                       child: DescriptionContainer(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         header: mission.missionName,

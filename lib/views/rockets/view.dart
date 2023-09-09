@@ -33,7 +33,7 @@ class RocketsView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final rocket = state.rockets[index];
                     return InkWell(
-                      onTap: () => context.goNamed(AppRouter.rocket, pathParameters: {"id": rocket.rocketId ?? "No Rocket ID"}),
+                      onTap: () => context.pushNamed(AppRouter.rocket, pathParameters: {"id": rocket.rocketId ?? "No Rocket ID"}),
                       child: DescriptionContainer(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         header: rocket.rocketName,
