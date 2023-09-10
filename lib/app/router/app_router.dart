@@ -21,86 +21,45 @@ class AppRouter {
   static const String mission = "mission";
 
   ///GoRouter configuration.
+  static final GlobalKey<NestedNavigatorsState> nestedNavigatorsKey = GlobalKey<NestedNavigatorsState>();
   static final GlobalKey<NavigatorState> mainNavigatorKey = GlobalKey<NavigatorState>();
   static final GlobalKey<NavigatorState> sliderNavigatorKey = GlobalKey<NavigatorState>();
   static final GlobalKey<NavigatorState> leftPanelNavigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> rightPanelNavigatorKey = GlobalKey<NavigatorState>();
 
   static final router = GoRouter(
-    // navigatorKey: mainNavigatorKey,
     routes: [
-      _homeRoute(),
+      ShellRoute(
+          navigatorKey: mainNavigatorKey,
+          builder: (context, state, child) => Material(
+                child: Stack(
+                  children: [
+                    child,
+                    NestedNavigators(
+                      key: nestedNavigatorsKey,
+                    )
+                  ],
+                ),
+              ),
+          routes: [
+            _homeRoute(),
+          ])
     ],
   );
 
   //Home routes.
-  static ShellRoute _homeRoute() {
-    return ShellRoute(navigatorKey: mainNavigatorKey, builder: (context, state, child) => child, routes: [
-      GoRoute(
+  static GoRoute _homeRoute() {
+    return GoRoute(
         path: home,
         name: home,
         parentNavigatorKey: mainNavigatorKey,
-        pageBuilder: (context, state) => AppPageTransition.rightToLeft(
-          key: state.pageKey,
-          name: state.name,
-          child: Material(
-            child: Stack(
-              children: [
-                const HomeView(),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [IconButton(onPressed: () => context.pushNamed(leftPanel), icon: const Icon(Icons.home))],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
+        builder: (context, state) {
+          return const HomeView();
+        },
         routes: <RouteBase>[
           _rocketsRoute(),
           _missionsRoute(),
-        ],
-      ),
-      GoRoute(
-        parentNavigatorKey: leftPanelNavigatorKey,
-        path: leftPanel,
-        name: leftPanel,
-        pageBuilder: (context, state) => AppPageTransition.leftToRight(
-          key: state.pageKey,
-          name: state.name,
-          child: Container(
-            margin: EdgeInsets.only(right: screenWidth(context) / 3),
-            color: Colors.blueGrey[900],
-            child: Center(
-              child: TextButton(
-                onPressed: () => context.pushNamed(rockets),
-                child: const Text("Rockets"),
-              ),
-            ),
-          ),
-        ),
-      ),
-      GoRoute(
-        parentNavigatorKey: sliderNavigatorKey,
-        path: slider,
-        name: slider,
-        pageBuilder: (context, state) => AppPageTransition.bottomToTop(
-          key: state.pageKey,
-          name: state.name,
-          child: Container(
-            margin: EdgeInsets.only(top: screenHeight(context) / 4),
-            color: Colors.blueGrey[900],
-            child: Center(
-              child: TextButton(
-                onPressed: () => context.pushNamed(missions),
-                child: const Text("Missions"),
-              ),
-            ),
-          ),
-        ),
-      ),
-    ]);
+        ]);
   }
 
   //Rockets route.
@@ -165,3 +124,52 @@ class AppRouter {
     );
   }
 }
+
+// Material(
+//                 child: Stack(
+//                   children: [
+//                     HomeView(),
+//                     NestedNavigators(
+//                       key: nestedNavigatorsKey,
+//                     )
+//                   ],
+//                 ),
+//               ),
+// GoRoute(
+//         parentNavigatorKey: leftPanelNavigatorKey,
+//         path: leftPanel,
+//         name: leftPanel,
+//         pageBuilder: (context, state) => AppPageTransition.leftToRight(
+//           key: state.pageKey,
+//           name: state.name,
+//           child: Container(
+//             margin: EdgeInsets.only(right: screenWidth(context) / 3),
+//             color: Colors.blueGrey[900],
+//             child: Center(
+//               child: TextButton(
+//                 onPressed: () => context.pushNamed(rockets),
+//                 child: const Text("Rockets"),
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//       GoRoute(
+//         parentNavigatorKey: sliderNavigatorKey,
+//         path: slider,
+//         name: slider,
+//         pageBuilder: (context, state) => AppPageTransition.bottomToTop(
+//           key: state.pageKey,
+//           name: state.name,
+//           child: Container(
+//             margin: EdgeInsets.only(top: screenHeight(context) / 4),
+//             color: Colors.blueGrey[900],
+//             child: Center(
+//               child: TextButton(
+//                 onPressed: () => context.pushNamed(missions),
+//                 child: const Text("Missions"),
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
